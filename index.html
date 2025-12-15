@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +18,6 @@
             --color-card-bg: #FFFFFF;
             --color-bg-light: #F0F0F0;
         }
-
         /* --- Dark Mode Override --- */
         .theme-dark {
             --color-primary: #0C121E;
@@ -32,7 +30,6 @@
             --color-card-bg: #2C2C2C;
             --color-bg-light: #252525;
         }
-
         body {
             background-color: var(--color-background);
             color: var(--color-text-dark);
@@ -41,7 +38,6 @@
             margin: 0;
             line-height: 1.6;
         }
-
         /* Typography Defaults */
         h1,
         h2,
@@ -52,12 +48,10 @@
             font-family: 'Montserrat', sans-serif;
             margin-top: 0;
         }
-
         img {
             max-width: 100%;
             height: auto;
         }
-
         /* Layout Utilities */
         .container {
             width: 90%;
@@ -65,7 +59,6 @@
             padding: 0 15px;
             /* Added padding for small screens */
         }
-
         /* Components: Header & Nav */
         .header {
             background-color: var(--color-card-bg);
@@ -76,13 +69,11 @@
             z-index: 1000;
             transition: background-color 0.3s;
         }
-
         .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
@@ -90,18 +81,15 @@
             color: var(--color-primary);
             text-decoration: none;
         }
-
         nav {
             display: none;
             /* Hidden on mobile by default, simplifying for now */
         }
-
         @media (min-width: 768px) {
             nav {
                 display: block;
             }
         }
-
         nav a {
             margin: 0 15px;
             text-decoration: none;
@@ -109,11 +97,9 @@
             font-weight: 500;
             transition: color 0.2s;
         }
-
         nav a:hover {
             color: var(--color-accent);
         }
-
         /* Theme Toggle Button */
         .btn-icon {
             background: none;
@@ -126,19 +112,15 @@
             transition: background-color 0.3s;
             line-height: 1;
         }
-
         .btn-icon:hover {
             background-color: rgba(0, 0, 0, 0.05);
         }
-
         .theme-dark .btn-icon:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
-
         .theme-dark .logo {
             color: var(--color-accent);
         }
-
         /* Buttons */
         .btn {
             display: inline-block;
@@ -151,43 +133,35 @@
             cursor: pointer;
             text-align: center;
         }
-
         .btn-accent {
             background-color: var(--color-accent);
             color: #fff;
         }
-
         .btn-accent-small {
             background-color: var(--color-accent);
             color: #fff;
             padding: 8px 16px;
             font-size: 0.9rem;
         }
-
         .btn-primary {
             background-color: var(--color-primary);
             color: #fff;
         }
-
         .btn-large {
             padding: 12px 28px;
             font-size: 1.1rem;
         }
-
         .btn:hover {
             filter: brightness(110%);
             transform: translateY(-1px);
         }
-
         /* Hero Section */
         .hero-section {
             padding: 4rem 0;
         }
-
         .hero-text {
             margin-bottom: 2rem;
         }
-
         .tagline {
             color: var(--color-accent);
             font-weight: 700;
@@ -196,48 +170,40 @@
             margin-bottom: 0.5rem;
             display: block;
         }
-
         .headline {
             font-size: 2rem;
             color: var(--color-text-dark);
             line-height: 1.2;
             margin-bottom: 1rem;
         }
-
         .subheadline {
             font-size: 1.1rem;
             color: var(--color-text-dark);
             margin-bottom: 2rem;
             opacity: 0.9;
         }
-
         .hero-image img {
             border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             display: block;
             margin: 0 auto;
         }
-
         /* Section Styling */
         .section {
             padding: 4rem 0;
         }
-
         .bg-light {
             background-color: var(--color-bg-light);
         }
-
         .bg-primary-dark {
             background-color: var(--color-primary);
         }
-
         .section-heading {
             font-size: 1.8rem;
             color: var(--color-text-dark);
             text-align: center;
             margin-bottom: 2rem;
         }
-
         .section-subtitle {
             text-align: center;
             margin-bottom: 3rem;
@@ -245,25 +211,20 @@
             color: var(--color-text-dark);
             opacity: 0.8;
         }
-
         .text-center {
             text-align: center;
         }
-
         .max-w-lg {
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
-
         .mt-lg {
             margin-top: 3rem;
         }
-
         .mt-md {
             margin-top: 1.5rem;
         }
-
         /* Cards & Grid Containers */
         .service-cards-grid,
         .article-cards-grid {
@@ -271,42 +232,35 @@
             flex-direction: column;
             gap: 20px;
         }
-
         .card {
             background-color: var(--color-card-bg);
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
-
         .card-title {
             color: var(--color-accent);
             margin-bottom: 1rem;
             font-size: 1.25rem;
             font-weight: 700;
         }
-
         .service-card ul {
             padding-left: 1.2rem;
             margin-bottom: 1.5rem;
         }
-
         .service-card li {
             margin-bottom: 0.5rem;
         }
-
         .stat-box {
             margin-top: 1.5rem;
             padding-top: 1rem;
             border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
-
         .stat-proof {
             font-weight: 700;
             color: var(--color-text-dark);
             font-size: 0.95rem;
         }
-
         /* Article Cards */
         .article-card {
             background-color: var(--color-card-bg);
@@ -318,19 +272,16 @@
             transition: transform 0.2s, box-shadow 0.2s;
             border: 1px solid transparent;
         }
-
         .article-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
-
         .date-tag {
             color: var(--color-accent);
             font-size: 0.9rem;
             font-weight: 700;
             margin-bottom: 5px;
         }
-
         .article-title {
             color: var(--color-text-dark);
             font-family: 'Montserrat', sans-serif;
@@ -338,24 +289,20 @@
             line-height: 1.4;
             margin-bottom: 0;
         }
-
         .text-link {
             color: var(--color-accent);
             text-decoration: none;
             font-weight: 700;
         }
-
         .text-link:hover {
             text-decoration: underline;
         }
-
         /* Timeline / Credentials */
         .timeline-grid {
             display: grid;
             gap: 1.5rem;
             margin-top: 2rem;
         }
-
         .timeline-item,
         .cert-item {
             background: var(--color-card-bg);
@@ -364,29 +311,24 @@
             border-left: 4px solid var(--color-accent);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
-
         .timeline-title {
             font-weight: 700;
             font-size: 1.1rem;
             color: var(--color-accent);
             margin-bottom: 0.5rem;
         }
-
         /* Contact Section */
         .text-white {
             color: #fff !important;
         }
-
         .text-white-subtle {
             color: rgba(255, 255, 255, 0.8) !important;
         }
-
         .contact-text {
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
         }
-
         /* Footer */
         .footer {
             background-color: #0b0c10;
@@ -395,35 +337,28 @@
             text-align: center;
             font-size: 0.9rem;
         }
-
         /* --- Media Queries (Desktop) --- */
         @media (min-width: 768px) {
             .container {
                 max-width: 1200px;
             }
-
             .header {
                 padding: 1.5rem 0;
             }
-
             .logo {
                 font-size: 1.8rem;
             }
-
             .service-cards-grid {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
             }
-
             .article-cards-grid {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
             }
-
             .timeline-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
             .hero-grid {
                 display: grid;
                 grid-template-columns: 1.2fr 1fr;
@@ -431,16 +366,13 @@
                 align-items: center;
                 gap: 4rem;
             }
-
             .hero-text {
                 margin-bottom: 0;
                 padding-right: 0;
             }
-
             .headline {
                 font-size: 3rem;
             }
-
             .section-heading {
                 font-size: 2.5rem;
             }
@@ -450,7 +382,6 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;700&display=swap"
         rel="stylesheet">
 </head>
-
 <body class="theme-day">
     <header class="header sticky-top">
         <div class="container nav-content">
@@ -464,7 +395,6 @@
             <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode">🌙</button>
         </div>
     </header>
-
     <main>
         <section id="hero" class="hero-section">
             <div class="container hero-grid">
@@ -474,14 +404,13 @@
                     </h1>
                     <p class="subheadline">Through mathematically optimized SIOP and Lean Six Sigma strategies.</p>
                     <a href="mailto:corazonwasuna@gmail.com?subject=Manufacturing%20Profit%20Consultation%20Request%20via%20Website&body=My%20Name%3A%20%0D%0AMy%20Company%3A%20%0D%0AChallenge%20Overview%3A%20%0D%0A%0D%0A[Please%20provide%20a%20brief%20overview%20of%20your%20current%20operational%20challenge%20or%20profit%20goal.]"
-                        class="btn btn-primary btn-large">Maximize Your Profit Now →</a>
+                        class="btn btn-accent btn-large">Maximize Your Profit Now →</a>
                 </div>
                 <div class="hero-image">
                     <img src="/Images/Cwasuna.png" alt="Professional Headshot of Corazon Obure">
                 </div>
             </div>
         </section>
-
         <section id="audience" class="section bg-light">
             <div class="container">
                 <h2 class="section-heading">Who I Serve</h2>
@@ -490,7 +419,6 @@
                     disruptions.</p>
             </div>
         </section>
-
         <section id="services" class="section">
             <div class="container">
                 <h2 class="section-heading">Strategic Services for Lasting Efficiency</h2>
@@ -530,7 +458,6 @@
                 </div>
             </div>
         </section>
-
         <section id="thought-leadership" class="section bg-light">
             <div class="container">
                 <h2 class="section-heading">Latest Insights & Thought Leadership</h2>
@@ -544,13 +471,11 @@
                 </div>
             </div>
         </section>
-
         <section id="credentials" class="section">
             <div class="container">
                 <h2 class="section-heading">Verifiable Impact & Credentials</h2>
                 <p class="text-center max-w-lg">12+ years of progressive leadership experience backed by rigorous
                     training and measurable results across the industrial sector.</p>
-
                 <div class="timeline-grid">
                     <div class="timeline-item">
                         <p class="timeline-title">★ Recognition for Support of FY25 Goals (Jul 2025)</p>
@@ -582,7 +507,6 @@
                 </div>
             </div>
         </section>
-
         <section id="contact" class="section bg-primary-dark">
             <div class="container contact-grid">
                 <div class="contact-text">
@@ -592,10 +516,8 @@
                     <p class="text-white-subtle">Click the button below to start a strategy conversation. It will open
                         your email client with a pre-filled template to ensure we get straight to solving your core
                         challenge.</p>
-
                     <a href="mailto:corazonwasuna@gmail.com?subject=Manufacturing%20Profit%20Consultation%20Request%20via%20Website&body=My%20Name%3A%20%0D%0AMy%20Company%3A%20%0D%0AChallenge%20Overview%3A%20%0D%0A%0D%0A[Please%20provide%20a%20brief%20overview%20of%20your%20current%20operational%20challenge%20and%20profit%20goal.]"
                         class="btn btn-accent btn-large mt-md">Email for Consultation →</a>
-
                     <div class="direct-contact-info mt-lg">
                         <p class="text-white">corazonwasuna@gmail.com</p>
                         <p class="text-white">+254 702 744 464</p>
@@ -615,19 +537,16 @@
             </div>
         </section>
     </main>
-
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Corazon Wasuna Obure. All rights reserved.</p>
         </div>
     </footer>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const toggleButton = document.getElementById('theme-toggle');
             const body = document.body;
             const themeKey = 'theme-preference';
-
             // Function to set theme
             const setTheme = (isDark) => {
                 if (isDark) {
@@ -640,10 +559,8 @@
                     toggleButton.textContent = '🌙'; // Moon icon for dark mode switch
                 }
             };
-
             // 1. Check Local Storage
             const savedTheme = localStorage.getItem(themeKey);
-
             if (savedTheme) {
                 setTheme(savedTheme === 'dark');
             } else {
@@ -651,7 +568,6 @@
                 const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 setTheme(systemPrefersDark);
             }
-
             // Toggle Event Listener
             toggleButton.addEventListener('click', () => {
                 const isDark = body.classList.contains('theme-dark');
@@ -660,7 +576,6 @@
                 // Save preference
                 localStorage.setItem(themeKey, !isDark ? 'dark' : 'light');
             });
-
             // Fetch Medium Posts
             const mediumContainer = document.getElementById('medium-posts');
             if (mediumContainer) {
@@ -678,7 +593,6 @@
                                     month: 'short',
                                     day: 'numeric'
                                 }).toUpperCase();
-
                                 output += `
                             <a href="${item.link}" target="_blank" class="card article-card">
                                 <p class="date-tag">${formattedDate}</p>
@@ -694,5 +608,4 @@
         });
     </script>
 </body>
-
-    </html>
+                </html>
