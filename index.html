@@ -3,338 +3,606 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corazon Obure - Manufacturing Profit Optimization</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Use Inter Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <title>Corazon Obure - Manufacturing Profit Optimization Expert</title>
     <style>
-        /* Custom styles for professional, responsive look */
+        /* --- Day Mode (Default) --- */
         :root {
-            scroll-behavior: smooth;
+            --color-primary: #1F2B4B;
+            /* Deep Navy Blue */
+            --color-accent: #00A699;
+            /* Industrial Teal */
+            --color-background: #F8F8F8;
+            /* Soft Off-White */
+            --color-text-dark: #1A1A1A;
+            --color-text-light: #FFFFFF;
+            --color-card-bg: #FFFFFF;
+            --color-bg-light: #F0F0F0;
+        }
+        /* --- Dark Mode Override --- */
+        .theme-dark {
+            --color-primary: #0C121E;
+            /* Darker Navy/Graphite */
+            --color-accent: #FF6B6B;
+            /* Bright Safety Orange (for contrast) */
+            --color-background: #1A1A1A;
+            --color-text-dark: #EFEFEF;
+            --color-text-light: #1A1A1A;
+            --color-card-bg: #2C2C2C;
+            --color-bg-light: #252525;
         }
         body {
-            font-family: 'Inter', sans-serif;
-            color: #1f2937; /* Dark Gray */
-            background-color: #f9fafb; /* Light Gray Background */
+            background-color: var(--color-background);
+            color: var(--color-text-dark);
+            font-family: 'Roboto', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            margin: 0;
+            line-height: 1.6;
         }
-        .hero-bg {
-            /* Complex/Awe-Inspiring Background using a dark gradient for professionalism */
-            background: linear-gradient(135deg, #0f172a 0%, #115e59 100%);
+        /* Typography Defaults */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Layout Utilities */
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 0 15px;
+            /* Added padding for small screens */
+        }
+        /* Components: Header & Nav */
+        .header {
+            background-color: var(--color-card-bg);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+        nav {
+            display: none;
+            /* Hidden on mobile by default, simplifying for now */
+        }
+        @media (min-width: 768px) {
+            nav {
+                display: block;
+            }
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--color-text-dark);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: var(--color-accent);
+        }
+        /* Theme Toggle Button */
+        .btn-icon {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 15px;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+            line-height: 1;
+        }
+        .btn-icon:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        .theme-dark .btn-icon:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn-accent {
+            background-color: var(--color-accent);
+            color: #fff;
+        }
+        .btn-accent-small {
+            background-color: var(--color-accent);
+            color: #fff;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: #fff;
+        }
+        .btn-large {
+            padding: 12px 28px;
+            font-size: 1.1rem;
+        }
+        .btn:hover {
+            filter: brightness(110%);
+            transform: translateY(-1px);
+        }
+        /* Hero Section */
+        .hero-section {
+            padding: 4rem 0;
+        }
+        .hero-text {
+            margin-bottom: 2rem;
+        }
+        .tagline {
+            color: var(--color-accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .headline {
+            font-size: 2rem;
+            color: var(--color-text-dark);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        .subheadline {
+            font-size: 1.1rem;
+            color: var(--color-text-dark);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .hero-image img {
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: block;
+            margin: 0 auto;
+        }
+        /* Section Styling */
+        .section {
+            padding: 4rem 0;
+        }
+        .bg-light {
+            background-color: var(--color-bg-light);
+        }
+        .bg-primary-dark {
+            background-color: var(--color-primary);
         }
         .section-heading {
-            border-left: 5px solid #0d9488; /* Teal border for accent */
+            font-size: 1.8rem;
+            color: var(--color-text-dark);
+            text-align: center;
+            margin-bottom: 2rem;
         }
-        /* Inline SVG Icons for Lucide-like aesthetic */
-        .icon {
-            width: 24px;
-            height: 24px;
-            stroke-width: 2;
-            stroke: currentColor;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 3rem;
+            margin-top: -1.5rem;
+            color: var(--color-text-dark);
+            opacity: 0.8;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .max-w-lg {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .mt-lg {
+            margin-top: 3rem;
+        }
+        .mt-md {
+            margin-top: 1.5rem;
+        }
+        /* Cards & Grid Containers */
+        .service-cards-grid,
+        .article-cards-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .card {
+            background-color: var(--color-card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .card-title {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        .service-card ul {
+            padding-left: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .service-card li {
+            margin-bottom: 0.5rem;
+        }
+        .stat-box {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .stat-proof {
+            font-weight: 700;
+            color: var(--color-text-dark);
+            font-size: 0.95rem;
+        }
+        /* Article Cards */
+        .article-card {
+            background-color: var(--color-card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: block;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid transparent;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .date-tag {
+            color: var(--color-accent);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .article-title {
+            color: var(--color-text-dark);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.4;
+            margin-bottom: 0;
+        }
+        .text-link {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .text-link:hover {
+            text-decoration: underline;
+        }
+        /* Timeline / Credentials */
+        .timeline-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .timeline-item,
+        .cert-item {
+            background: var(--color-card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--color-accent);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .timeline-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        /* Contact Section */
+        .text-white {
+            color: #fff !important;
+        }
+        .text-white-subtle {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+        .contact-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        /* Footer */
+        .footer {
+            background-color: #0b0c10;
+            color: #888;
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        /* --- Media Queries (Desktop) --- */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 1200px;
+            }
+            .header {
+                padding: 1.5rem 0;
+            }
+            .logo {
+                font-size: 1.8rem;
+            }
+            .service-cards-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .article-cards-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .timeline-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-grid {
+                display: grid;
+                grid-template-columns: 1.2fr 1fr;
+                /* Text wider than image */
+                align-items: center;
+                gap: 4rem;
+            }
+            .hero-text {
+                margin-bottom: 0;
+                padding-right: 0;
+            }
+            .headline {
+                font-size: 3rem;
+            }
+            .section-heading {
+                font-size: 2.5rem;
+            }
         }
     </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
 </head>
-<body>
-
-    <!-- Header & Navigation -->
-    <header class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#hero" class="text-2xl font-extrabold text-teal-700 tracking-tight">Corazon Obure</a>
-            <nav class="hidden md:flex space-x-6 text-gray-600">
-                <a href="#services" class="hover:text-teal-700 transition duration-150">Services</a>
-                <a href="#credibility" class="hover:text-teal-700 transition duration-150">Credibility</a>
-                <a href="#contact" class="hover:text-teal-700 transition duration-150">Contact</a>
+<body class="theme-day">
+    <header class="header sticky-top">
+        <div class="container nav-content">
+            <a href="#hero" class="logo">Corazon Obure</a>
+            <nav>
+                <a href="#services">Services</a>
+                <a href="#credentials">Impact</a>
+                <a href="#contact">Contact</a>
             </nav>
-            <a href="#contact" class="md:hidden p-2 text-teal-700 rounded-full border border-teal-700 hover:bg-teal-50 transition duration-150">
-                <!-- Phone Icon -->
-                <svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.08 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            </a>
+            <a href="#contact" class="btn btn-accent-small">Start Profiting →</a>
+            <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode">🌙</button>
         </div>
     </header>
-
     <main>
-        <!-- 1. HERO SECTION (Core Messaging & CTA Above Fold) -->
-        <section id="hero" class="hero-bg py-20 md:py-32 text-white">
-            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-12">
-                <div class="max-w-xl text-center md:text-left">
-                    <span class="text-amber-400 text-lg font-semibold uppercase tracking-wider">Manufacturing Profit Optimization Expert</span>
-                    <!-- Value Proposition (Hero Headline) -->
-                    <h1 class="text-4xl md:text-6xl font-extrabold mt-2 leading-tight">
-                        Helping Manufacturing Leaders Eliminate Operational Waste and Maximize Profit
+        <section id="hero" class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <p class="tagline">Manufacturing Profit Optimization Expert</p>
+                    <h1 class="headline">Helping Manufacturing Leaders Eliminate Operational Waste and Maximize Profit
                     </h1>
-                    <p class="mt-4 text-xl font-light text-gray-200">
-                        Through mathematically optimized SIOP and Lean Six Sigma strategies.
-                    </p>
-                    <!-- CTA Placement (Highly Contrasting and Above the Fold) -->
-                    <a href="#contact" class="inline-block mt-8 px-10 py-4 text-lg font-bold text-gray-900 bg-amber-500 rounded-lg shadow-2xl hover:bg-amber-400 transition transform hover:scale-[1.02] duration-300 ease-in-out">
-                        Maximize Your Profit Now
-                    </a>
+                    <p class="subheadline">Through mathematically optimized SIOP and Lean Six Sigma strategies.</p>
+                    <a href="mailto:corazonwasuna@gmail.com?subject=Manufacturing%20Profit%20Consultation%20Request%20via%20Website&body=My%20Name%3A%20%0D%0AMy%20Company%3A%20%0D%0AChallenge%20Overview%3A%20%0D%0A%0D%0A[Please%20provide%20a%20brief%20overview%20of%20your%20current%20operational%20challenge%20or%20profit%20goal.]"
+                        class="btn btn-primary btn-large">Maximize Your Profit Now →</a>
                 </div>
-
-                <!-- Professional Headshot / Video Placeholder -->
-                <div class="w-full md:w-5/12">
-                    <!-- Image component simulating a loaded asset -->
-                    <div class="aspect-square rounded-xl shadow-2xl border-4 border-amber-500/50 overflow-hidden">
-                        <img src="/Images/Cwasuna.png"
-                             alt="Professional Headshot of Corazon Obure, Manufacturing Profit Optimization Expert"
-                             class="w-full h-full object-cover"
-                             onerror="this.onerror=null; this.src='https://placehold.co/400x400/6b7280/ffffff?text=Image+Missing';"
-                        />
-                    </div>
+                <div class="hero-image">
+                    <img src="/Images/Cwasuna.png" alt="Professional Headshot of Corazon Obure">
                 </div>
             </div>
         </section>
-        
-        <!-- Target Audience and Core Problem -->
-        <section class="bg-gray-50 py-12">
-            <div class="container mx-auto px-4 text-center max-w-4xl">
-                <h2 class="text-3xl font-bold text-gray-900 mb-2">Who I Serve</h2>
-                <p class="text-xl text-gray-600">
-                    I specialize in high-volume, rapid-pace sectors like FMCG and Industrial Manufacturing, addressing core problems like high costs, outdated MRP, and critical supply chain disruptions.
-                </p>
+        <section id="audience" class="section bg-light">
+            <div class="container">
+                <h2 class="section-heading">Who I Serve</h2>
+                <p class="text-center max-w-lg">I specialize in high-volume, rapid-pace sectors like FMCG and Industrial
+                    Manufacturing, addressing core problems like high costs, outdated MRP, and critical supply chain
+                    disruptions.</p>
             </div>
         </section>
-
-
-        <!-- 2. SERVICES & EXPERTISE -->
-        <section id="services" class="py-16 md:py-24">
-            <div class="container mx-auto px-4">
-                <div class="max-w-3xl mb-12">
-                    <h2 class="section-heading pl-4 text-4xl font-extrabold text-gray-900">
-                        Strategic Services for Lasting Efficiency
-                    </h2>
-                    <p class="mt-4 text-lg text-gray-600">
-                        Corazon's services are focused on delivering measurable, profit-driven results by transforming your supply chain from a cost center into a competitive advantage.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-                    <!-- Service Pillar 1: Supply Chain Planning & Optimization -->
-                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-teal-600">
-                        <div class="text-teal-600 mb-4">
-                            <!-- Icon: Planning -->
-                            <svg class="icon w-8 h-8" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">SIOP & Mathematical Optimization</h3>
-                        <ul class="space-y-3 text-gray-600 list-disc list-inside">
+        <section id="services" class="section">
+            <div class="container">
+                <h2 class="section-heading">Strategic Services for Lasting Efficiency</h2>
+                <div class="service-cards-grid">
+                    <div class="card service-card">
+                        <h3 class="card-title">SIOP & Mathematical Optimization</h3>
+                        <ul>
                             <li>Integrated Business Planning (IBP) framework setup.</li>
                             <li>Shift from MRP to profit-focused Mathematical Optimization.</li>
-                            <li>Data-driven Demand & Supply Forecasting.</li>
                         </ul>
-                        <p class="mt-4 font-semibold text-teal-700">
-                            <span class="text-amber-600 font-bold">Proof:</span> Achieve up to <span class="text-amber-700 font-bold">20% improvement</span> in annual inventory efficiency.
-                        </p>
-                        <p class="mt-1 font-semibold text-teal-700">
-                            <span class="text-amber-600 font-bold">Proof:</span> Target a <span class="text-amber-700 font-bold">95% accuracy rate</span> in S&D forecasting.
-                        </p>
-                    </div>
-
-                    <!-- Service Pillar 2: Operational Excellence -->
-                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-teal-600">
-                        <div class="text-teal-600 mb-4">
-                            <!-- Icon: Improvement -->
-                            <svg class="icon w-8 h-8" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                        <div class="stat-box">
+                            <p class="stat-proof">**Proof:** Achieve up to 20% improvement in annual inventory
+                                efficiency.</p>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Operational Excellence & CI</h3>
-                        <ul class="space-y-3 text-gray-600 list-disc list-inside">
+                    </div>
+                    <div class="card service-card">
+                        <h3 class="card-title">Operational Excellence & CI</h3>
+                        <ul>
                             <li>Lean Six Sigma and Kaizen facilitation.</li>
-                            <li>Process optimization focused on waste elimination.</li>
                             <li>System Integration and Digital Transformation strategy (SAP APO familiarity).</li>
                         </ul>
-                        <p class="mt-4 font-semibold text-teal-700">
-                            <span class="text-amber-600 font-bold">Expertise:</span> Certified in Digital Transformation in Supply Chains.
-                        </p>
-                        <p class="mt-1 font-semibold text-teal-700">
-                            <span class="text-amber-600 font-bold">Expertise:</span> Proven experience leading QMS and Kaizen events.
-                        </p>
-                    </div>
-
-                    <!-- Service Pillar 3: Strategic Sourcing & Cost Reduction -->
-                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-teal-600">
-                        <div class="text-teal-600 mb-4">
-                            <!-- Icon: Sourcing/Cost -->
-                            <svg class="icon w-8 h-8" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        <div class="stat-box">
+                            <p class="stat-proof">**Expertise:** Proven experience leading QMS and Kaizen events.</p>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Strategic Sourcing & Risk</h3>
-                        <ul class="space-y-3 text-gray-600 list-disc list-inside">
+                    </div>
+                    <div class="card service-card">
+                        <h3 class="card-title">Strategic Sourcing & Risk</h3>
+                        <ul>
                             <li>End-to-end global sourcing and procurement strategies.</li>
-                            <li>International Trade & Compliance (KRA/KEBS).</li>
                             <li>Resilience building via Scenario Planning and Testing.</li>
                         </ul>
-                        <p class="mt-4 font-semibold text-teal-700">
-                            <span class="text-amber-600 font-bold">Proof:</span> Track record of achieving a <span class="text-amber-700 font-bold">12% reduction</span> in the cost of goods.
-                        </p>
-                        <p class="mt-1 font-semibold text-teal-700">
-                            <span class="text-amber-600 font-bold">Expertise:</span> Freight optimization programs.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. CREDIBILITY AND SOCIAL PROOF -->
-        <section id="credibility" class="bg-teal-700 py-16 md:py-24 text-white">
-            <div class="container mx-auto px-4">
-                <div class="text-center max-w-4xl mx-auto mb-12">
-                    <h2 class="text-4xl font-extrabold">Verifiable Impact & Credentials</h2>
-                    <p class="mt-4 text-xl text-teal-200">
-                        12+ years of progressive leadership experience backed by rigorous training and measurable results across the industrial sector.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-
-                    <!-- Awards & Honors -->
-                    <div>
-                        <h3 class="text-2xl font-bold border-b-2 border-amber-400 pb-2 mb-4">Honors & Demonstrated Impact</h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-start">
-                                <span class="text-amber-400 mr-3 mt-1">&#9733;</span>
-                                <div>
-                                    <p class="font-semibold">Employee of the Year (Dec 2018)</p>
-                                    <p class="text-sm text-teal-200">Recognized by Envirofit International for transforming the logistics department and building efficiency into the system.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-amber-400 mr-3 mt-1">&#9733;</span>
-                                <div>
-                                    <p class="font-semibold">Best Innovation Team & Business Impact Awards (2024 - 2025)</p>
-                                    <p class="text-sm text-teal-200">Multiple recognitions from PZ Cussons East Africa for contributing to FY25 goals and driving innovation.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-amber-400 mr-3 mt-1">&#9733;</span>
-                                <div>
-                                    <p class="font-semibold">Rising Star Award (Jul 2024)</p>
-                                    <p class="text-sm text-teal-200">Acknowledged for outstanding trajectory and contribution to operational goals.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Certifications & Academic -->
-                    <div>
-                        <h3 class="text-2xl font-bold border-b-2 border-amber-400 pb-2 mb-4">Key Certifications & Education</h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-start">
-                                <span class="text-amber-400 mr-3 mt-1">&#10003;</span>
-                                <div>
-                                    <p class="font-semibold">Certified Six Sigma Green Belt</p>
-                                    <p class="text-sm text-teal-200">Certified Kaizen Facilitator and Operational Excellence Work-Out Leader.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-amber-400 mr-3 mt-1">&#10003;</span>
-                                <div>
-                                    <p class="font-semibold">Supply Chain Resilience & Digital Transformation</p>
-                                    <p class="text-sm text-teal-200">Specialized certifications in Risk, Resilience, and the Digital Transformation in Supply Chains.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-amber-400 mr-3 mt-1">&#10003;</span>
-                                <div>
-                                    <p class="font-semibold">M.A. in Project Planning and Management</p>
-                                    <p class="text-sm text-teal-200">University of Nairobi (2015-2018), complemented by a BCom Management Science Option.</p>
-                                </div>
-                            </li>
-                        </ul>
-                        <!-- Proprietary Expertise Placeholder -->
-                        <div class="mt-6 p-4 bg-teal-800 rounded-lg shadow-inner">
-                            <p class="font-semibold text-amber-400">Thought Leadership:</p>
-                            <p class="text-sm">Download our free SIOP Checklist to benchmark your planning maturity and see how we apply proprietary expertise.</p>
-                            <a href="#" class="text-sm underline text-teal-50 hover:text-white">Request the Checklist &rarr;</a>
+                        <div class="stat-box">
+                            <p class="stat-proof">**Proof:** Track record of achieving a 12% reduction in the cost of
+                                goods.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- 4. CONTACT & ESSENTIAL FUNCTIONALITY -->
-        <section id="contact" class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-4">
-                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <!-- Contact Details and Direct Mailto Link -->
-                    <div class="md:order-2">
-                        <h2 class="text-4xl font-extrabold text-gray-900 mb-6">Let's Discuss Your Profit Potential</h2>
-                        <p class="text-lg text-gray-600 mb-6">
-                            Ready to eliminate waste and mathematically optimize your manufacturing operations? Click the button below to start an email conversation immediately.
-                        </p>
-                        <!-- Form fields remain for visual consistency, but the submit button is a mailto link -->
-                        <div class="space-y-4 bg-gray-50 p-6 rounded-xl shadow-inner">
-                            <!-- Input Fields (for user context) -->
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700">Your Name (for reference)</label>
-                                <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3" placeholder="e.g., John Doe">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700">Work Email</label>
-                                <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3" placeholder="e.g., john.doe@company.com">
-                            </div>
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-gray-700">Brief Message or Inquiry Type</label>
-                                <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3" placeholder="e.g., Interested in SIOP optimization for our facility..."></textarea>
-                            </div>
-                            <!-- Mailto Button -->
-                            <a href="mailto:corazonwasuna@gmail.com?subject=Consultation%20Request%20via%20Website&body=My%20Name%3A%20%0D%0AMy%20Company%20Email%3A%20%0D%0AInquiry%20Details%3A%20%0D%0A%0D%0A[Please%20provide%20a%20brief%20overview%20of%20your%20challenge%20and%20contact%20information%20for%20a%20follow-up.]"
-                               class="w-full inline-block text-center px-4 py-3 text-lg font-bold text-gray-900 bg-amber-500 rounded-lg shadow-lg hover:bg-amber-400 transition duration-300"
-                               target="_blank">
-                                Send Consultation Request &rarr;
+        <section id="thought-leadership" class="section bg-light">
+            <div class="container">
+                <h2 class="section-heading">Latest Insights & Thought Leadership</h2>
+                <p class="section-subtitle">Articles from the Medium Publication on Operational Excellence.</p>
+                <div class="article-cards-grid" id="medium-posts">
+                    <!-- Posts will be loaded here dynamically -->
+                </div>
+                <div class="text-center mt-lg">
+                    <a href="https://medium.com/@corazonwasuna" target="_blank" class="text-link">Read All Articles on
+                        Medium →</a>
+                </div>
+            </div>
+        </section>
+        <section id="credentials" class="section">
+            <div class="container">
+                <h2 class="section-heading">Verifiable Impact & Credentials</h2>
+                <p class="text-center max-w-lg">12+ years of progressive leadership experience backed by rigorous
+                    training and measurable results across the industrial sector.</p>
+                <div class="timeline-grid">
+                    <div class="timeline-item">
+                        <p class="timeline-title">★ Recognition for Support of FY25 Goals (Jul 2025)</p>
+                        <p class="timeline-detail">Issued by PZ Cussons East Africa. Effort and ability to work with the
+                            team for an impactful performance for the fiscal year 2025.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <p class="timeline-title">★ Best Innovation Team 2025 (Jun 2025)</p>
+                        <p class="timeline-detail">Issued by PZ Cussons East Africa. Part of the team that delivered
+                            the best innovation in the shortest time possible in the beauty and haircare category.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <p class="timeline-title">★ Rising Star Award 2024 (Jul 2024)</p>
+                        <p class="timeline-detail">Issued by PZ Cussons East Africa. Proven dedication and hardworking
+                            towards PZ Cussons goals.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <p class="timeline-title">★ Business Impact 2024 (Jun 2024)</p>
+                        <p class="timeline-detail">Issued by PZ Cussons East Africa. Raising the bar of performance.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <p class="timeline-title">★ Employee of the Year (Dec 2018)</p>
+                        <p class="timeline-detail">Issued by Envirofit International. Transformation of the logistics
+                            department and building efficiency into the system.</p>
+                    </div>
+                    <div class="cert-item">
+                        <p class="cert-title">✓ Certified Six Sigma Green Belt</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="section bg-primary-dark">
+            <div class="container contact-grid">
+                <div class="contact-text">
+                    <h2 class="section-heading text-white">Let's Discuss Your Profit Potential</h2>
+                    <p class="text-white">Ready to eliminate waste and mathematically optimize your manufacturing
+                        operations?</p>
+                    <p class="text-white-subtle">Click the button below to start a strategy conversation. It will open
+                        your email client with a pre-filled template to ensure we get straight to solving your core
+                        challenge.</p>
+                    <a href="mailto:corazonwasuna@gmail.com?subject=Manufacturing%20Profit%20Consultation%20Request%20via%20Website&body=My%20Name%3A%20%0D%0AMy%20Company%3A%20%0D%0AChallenge%20Overview%3A%20%0D%0A%0D%0A[Please%20provide%20a%20brief%20overview%20of%20your%20current%20operational%20challenge%20and%20profit%20goal.]"
+                        class="btn btn-accent btn-large mt-md">Email for Consultation →</a>
+                    <div class="direct-contact-info mt-lg">
+                        <p class="text-white">corazonwasuna@gmail.com</p>
+                        <p class="text-white">+254 702 744 464</p>
+                        <p class="text-white">
+                            <a href="https://www.linkedin.com/in/corazon-wasuna/" class="text-white" target="_blank"
+                                style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                                LinkedIn Profile
                             </a>
-                        </div>
-                    </div>
-
-                    <!-- Contact Details and Social Media -->
-                    <div class="md:order-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Direct Contact</h3>
-                            <div class="space-y-4">
-                                <p class="flex items-center text-gray-700">
-                                    <!-- Mail Icon -->
-                                    <svg class="icon w-6 h-6 mr-3 text-teal-600" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                    <a href="mailto:corazonwasuna@gmail.com" class="hover:text-teal-700">corazonwasuna@gmail.com</a>
-                                </p>
-                                <p class="flex items-center text-gray-700">
-                                    <!-- Phone Icon -->
-                                    <svg class="icon w-6 h-6 mr-3 text-teal-600" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.08 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                                    <a href="tel:+254702744464" class="hover:text-teal-700">+254 702 744 464</a>
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Social Media Icons -->
-                        <div class="mt-8">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Connect</h3>
-                            <div class="flex space-x-4">
-                                <!-- LinkedIn Icon -->
-                                <a href="https://www.linkedin.com/in/corazon-wasuna/" target="_blank" aria-label="LinkedIn" class="text-gray-500 hover:text-teal-600 transition duration-300">
-                                    <svg class="icon w-8 h-8" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                                </a>
-                                <!-- Medium Icon (Represented by a feather/pen icon for thought leadership/writing) -->
-                                <!-- NOTE: Corrected typo from mdium.com to medium.com -->
-                                <a href="https://medium.com/in/corazon-wasuna/" target="_blank" aria-label="Medium Blog" class="text-gray-500 hover:text-teal-600 transition duration-300">
-                                    <!-- Feather Icon -->
-                                    <svg class="icon w-8 h-8" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path><path d="M18 13.04V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h12V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7.96"></path></svg>
-                                </a>
-                            </div>
-                        </div>
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4 text-center text-sm">
+    <footer class="footer">
+        <div class="container">
             <p>&copy; 2025 Corazon Wasuna Obure. All rights reserved.</p>
-            <p class="mt-2 text-gray-400">Specializing in Manufacturing, FMCG, and Logistics/E-commerce Operational Excellence.</p>
         </div>
     </footer>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('theme-toggle');
+            const body = document.body;
+            const themeKey = 'theme-preference';
+            // Function to set theme
+            const setTheme = (isDark) => {
+                if (isDark) {
+                    body.classList.remove('theme-day');
+                    body.classList.add('theme-dark');
+                    toggleButton.textContent = '☀️'; // Sun icon for light mode switch
+                } else {
+                    body.classList.remove('theme-dark');
+                    body.classList.add('theme-day');
+                    toggleButton.textContent = '🌙'; // Moon icon for dark mode switch
+                }
+            };
+            // 1. Check Local Storage
+            const savedTheme = localStorage.getItem(themeKey);
+            if (savedTheme) {
+                setTheme(savedTheme === 'dark');
+            } else {
+                // 2. Check System Preference
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                setTheme(systemPrefersDark);
+            }
+            // Toggle Event Listener
+            toggleButton.addEventListener('click', () => {
+                const isDark = body.classList.contains('theme-dark');
+                // Switch to the opposite
+                setTheme(!isDark);
+                // Save preference
+                localStorage.setItem(themeKey, !isDark ? 'dark' : 'light');
+            });
+            // Fetch Medium Posts
+            const mediumContainer = document.getElementById('medium-posts');
+            if (mediumContainer) {
+                fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@corazonwasuna')
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.status === 'ok') {
+                            const items = data.items.slice(0, 4); // Get the latest 4 posts
+                            let output = '';
+                            items.forEach(item => {
+                                // Format the date (e.g., "MAY 15, 2025")
+                                const date = new Date(item.pubDate);
+                                const formattedDate = date.toLocaleDateString('en-US', {
+                                    year: 'numeric',
+                                    month: 'short',
+                                    day: 'numeric'
+                                }).toUpperCase();
+                                output += `
+                            <a href="${item.link}" target="_blank" class="card article-card">
+                                <p class="date-tag">${formattedDate}</p>
+                                <h3 class="article-title">${item.title}</h3>
+                            </a>
+                        `;
+                            });
+                            mediumContainer.innerHTML = output;
+                        }
+                    })
+                    .catch(err => console.error('Error fetching Medium posts:', err));
+            }
+        });
+    </script>
 </body>
 </html>
